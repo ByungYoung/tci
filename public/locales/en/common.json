@@ -1,0 +1,82 @@
+{
+  "title": "TCI Temperament and Character Inventory",
+  "subtitle": "Explore your personality traits through Cloninger's Temperament and Character Inventory.",
+  "progress": "Completed",
+  "prev": "Previous",
+  "next": "Next",
+  "complete": "Complete",
+  "restart": "Start Again",
+  "validation_warning": "Please answer all questions.",
+  "calculating": "Calculating results...",
+  "results_title": "TCI Test Results",
+  "results_subtitle": "Here are your temperament and character trait results.",
+  "results_info": "Overall Results",
+  "point": "points",
+  "temperament": "Temperament",
+  "character": "Character",
+  "save": "Save Results",
+  "saved": "Results saved!",
+  "share": "Share Results",
+  "copy_link": "Copy Link",
+  "validity_warning": "Response Validity Warning",
+  "validity_message": "Your responses to the following questions don't match expected patterns:",
+  "validity_restart": "Consider retaking the test for more accurate results.",
+  "expected": "Expected answer for",
+  "actual": "Your answer",
+  "no_response": "No response",
+
+  "ns_desc": "Novelty Seeking (NS): Tendency to be excited by novel stimuli and potential rewards",
+  "ha_desc": "Harm Avoidance (HA): Tendency to inhibit behavior in response to signals of punishment",
+  "rd_desc": "Reward Dependence (RD): Tendency to respond to social cues and form attachments",
+  "ps_desc": "Persistence (PS): Ability to maintain behavior despite lack of reinforcement",
+  "sd_desc": "Self-Directedness (SD): Ability to regulate behavior according to one's goals and values",
+  "co_desc": "Cooperativeness (CO): Ability to understand, accept, and work with others",
+  "st_desc": "Self-Transcendence (ST): Ability to identify with something larger than oneself",
+
+  "answers": {
+    "1": "Definitely false",
+    "2": "Mostly false",
+    "3": "Neither true nor false",
+    "4": "Mostly true",
+    "5": "Definitely true"
+  },
+
+  "interpretation": {
+    "title": "Personalized Interpretation",
+    "ns": {
+      "low": "You tend to be orderly, methodical, and prefer familiar situations over change. You carefully consider options before trying something new and value following rules and routines.",
+      "medium": "You have a balanced approach between adventure and caution. Depending on the situation, you may seek new experiences or stick with safer choices.",
+      "high": "You actively pursue novel experiences and stimulation, are curious by nature, and tend to get bored easily. You enjoy exploring and experimenting rather than being constrained by rules or limitations."
+    },
+    "ha": {
+      "low": "You tend to be optimistic, confident, and comfortable in uncertain situations. You aren't afraid of taking risks and remain calm in stressful situations.",
+      "medium": "You show balanced caution in most situations, avoiding excessive risks without undue worry. You can approach situations either cautiously or confidently, depending on the context.",
+      "high": "You tend to worry about and be cautious regarding uncertainty and potential risks. You may experience stress in new situations or changes, and prefer safe, predictable environments."
+    },
+    "rd": {
+      "low": "You tend to be independent and emotionally detached, less reliant on others' approval or validation. You value personal space and autonomy.",
+      "medium": "You maintain a healthy balance between social interaction and independence. You enjoy close relationships while also maintaining your own space and independence.",
+      "high": "You tend to be warm and emotionally open, valuing close relationships with others. You're sensitive to social approval and find satisfaction in bonds with others."
+    },
+    "ps": {
+      "low": "You tend to be pragmatic and prefer immediate results, able to shift direction easily when faced with obstacles or delays. You have the ability to adapt to various activities and quick changes.",
+      "medium": "You show reasonable levels of perseverance, working towards important goals while maintaining flexibility to adjust plans when needed.",
+      "high": "You have high levels of perseverance and determination, working steadily toward goals despite difficulties. You value long-term achievements and completion."
+    },
+    "sd": {
+      "low": "It may be beneficial to develop your sense of self-efficacy and goal-setting abilities. You might find it challenging to recognize responsibility for your actions and set long-term goals.",
+      "medium": "You have a sense of responsibility for your actions and are generally goal-oriented, but also have a balanced approach that allows for compromise when necessary.",
+      "high": "You have high levels of self-discipline and goal-orientation, taking responsibility for your actions and choices. You excel at guiding your life according to your own values and objectives."
+    },
+    "co": {
+      "low": "It may be beneficial to develop empathy skills and interpersonal abilities. You might find it challenging to understand others' perspectives and collaborate toward shared goals.",
+      "medium": "You have the ability to recognize others' needs and feelings while balancing your own interests and goals. You can be either cooperative or independent depending on the situation.",
+      "high": "You are highly empathetic and cooperative, sensitive to others' feelings and needs. You value harmonious relationships and readily participate in helping others."
+    },
+    "st": {
+      "low": "You take a practical and realistic approach, focusing on concrete and observable reality. You value logic and empirical evidence over spiritual or abstract concepts.",
+      "medium": "You maintain a balance between practical reality and awareness of greater meaning or purpose. You can adopt either a realistic or spiritual/philosophical perspective depending on the context.",
+      "high": "You strongly experience yourself as part of something larger in the universe, with strong spiritual or universal connectivity. You are intuitive, creative, and seek deeper meaning and purpose."
+    }
+  }
+}
