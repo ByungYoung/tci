@@ -1,10 +1,9 @@
-import { v4 as uuidv4 } from "uuid";
-import { eq } from "drizzle-orm";
-import { db, tciResults } from "@/lib/db";
 import { TCIResponse, TCICalculatedResult } from "./tci-data";
+import { saveTCIResultsAction, getTCIResultByIdAction } from "./actions";
 
 /**
  * TCI 검사 결과 저장 함수
+ * 클라이언트 측에서 서버 액션을 호출하는 래퍼
  * @param responses TCI 검사 응답 데이터
  * @param results TCI 검사 결과 데이터
  * @returns 저장된 결과의 고유 ID
@@ -14,18 +13,7 @@ export const saveTCIResults = async (
   results: TCICalculatedResult
 ): Promise<string> => {
   try {
-    // 고유 ID 생성
-    const resultId = uuidv4();
-
-    // Drizzle ORM으로 결과 저장
-    await db.insert(tciResults).values({
-      id: resultId,
-      responses,
-      results,
-      createdAt: new Date(),
-    });
-
-    return resultId;
+    return await saveTCIResultsAction(responses, results);
   } catch (error) {
     console.error("Error saving TCI results:", error);
     throw new Error("Failed to save TCI results");
@@ -34,18 +22,13 @@ export const saveTCIResults = async (
 
 /**
  * TCI 검사 결과 조회 함수
+ * 클라이언트 측에서 서버 액션을 호출하는 래퍼
  * @param resultId 결과 ID
  * @returns 저장된 TCI 검사 결과
  */
 export const getTCIResultById = async (resultId: string) => {
   try {
-    // Drizzle ORM으로 결과 조회
-    const results = await db
-      .select()
-      .from(tciResults)
-      .where(eq(tciResults.id, resultId));
-
-    return results[0] || null;
+    return await getTCIResultByIdAction(resultId);
   } catch (error) {
     console.error("Error fetching TCI result:", error);
     throw new Error("Failed to fetch TCI result");

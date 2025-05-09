@@ -24,11 +24,9 @@ export const users = pgTable("users", {
 // TCI 검사 결과 테이블
 export const tciResults = pgTable("tci_results", {
   id: uuid("id").defaultRandom().primaryKey(),
-  userId: uuid("user_id")
-    .references(() => users.id)
-    .notNull(),
+  userId: uuid("user_id").references(() => users.id), // 익명 사용자도 저장 가능하도록 notNull 제거
   responses: json("responses").notNull(), // TCI 응답 데이터 (문항별 응답)
-  scores: json("scores").notNull(), // 계산된 점수
+  results: json("results").notNull(), // 계산된 결과 (scores 대신 results로 변경)
   createdAt: timestamp("created_at").defaultNow().notNull(),
   testLanguage: varchar("test_language", { length: 2 }).notNull().default("ko"),
   isPublic: boolean("is_public").default(false),

@@ -5,12 +5,16 @@ const { migrate } = require("drizzle-orm/postgres-js/migrator");
 const postgres = require("postgres");
 
 const runMigration = async () => {
-  if (!process.env.DATABASE_URL) {
-    throw new Error("DATABASE_URL이 환경변수에 설정되지 않았습니다.");
+  const postgresUrl =
+    process.env.POSTGRES_URL || process.env.POSTGRES_PRISMA_URL;
+  if (!postgresUrl) {
+    throw new Error(
+      "POSTGRES_URL 또는 POSTGRES_PRISMA_URL이 환경변수에 설정되지 않았습니다."
+    );
   }
 
   // SQL 연결
-  const sql = postgres(process.env.DATABASE_URL, { max: 1 });
+  const sql = postgres(postgresUrl, { max: 1 });
   const db = drizzle(sql);
 
   // 마이그레이션 실행

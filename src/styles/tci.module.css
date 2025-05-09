@@ -230,6 +230,46 @@
   font-weight: bold;
 }
 
+/* 언어 선택 드롭다운 스타일 */
+.languageSelector {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.langLabel {
+  margin-right: 10px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.langSelect {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  background-color: white;
+  color: #4b5563;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234b5563' viewBox='0 0 16 16'%3E%3Cpath d='M8 11.5l-5-5 1.5-1.5L8 8.5 11.5 5 13 6.5l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+.langSelect:hover {
+  border-color: #9ca3af;
+}
+
+.langSelect:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
   .container {

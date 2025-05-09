@@ -2,7 +2,7 @@
 
 import { TCIItem, TCIResponse } from "@/lib/tci-data";
 import styles from "@/styles/tci.module.css";
-import { useTranslation } from "next-i18next";
+import { useClientTranslation } from "@/lib/i18n-client";
 
 interface TCITestProps {
   currentItems: TCIItem[];
@@ -25,7 +25,7 @@ const TCITest = ({
   totalPages,
   isCurrentPageComplete,
 }: TCITestProps) => {
-  const { t } = useTranslation("common");
+  const { t } = useClientTranslation();
 
   // 진행율 계산
   const progressPercent = Math.round((currentPage / totalPages) * 100);

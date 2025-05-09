@@ -32,26 +32,33 @@ interface LayoutProps {
   };
 }
 
-// 레이아웃을 클라이언트 컴포넌트로 변경
-export default function LocaleLayout({ children, params }: LayoutProps) {
-  // 서버에서 접근할 수 있는 정적 값으로 기본 로케일 사용
-  const locale = params?.locale || defaultLocale;
+// 메시지 제공자 컴포넌트 분리
+async function IntlProviderWrapper({
+  locale,
+  children,
+}: {
+  locale: string;
+  children: React.ReactNode;
+}) {
+  const messages = await getMessages(locale);
+
+  return (
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      {children}
+    </NextIntlClientProvider>
+  );
+}
+
+// 레이아웃을 서버 컴포넌트로 사용
+export default async function LocaleLayout({ children, params }: LayoutProps) {
+  // Next.js 15에서는 params를 await 해야 합니다
+  const resolvedParams = await Promise.resolve(params);
+  const locale = resolvedParams.locale ?? defaultLocale;
 
   // 지원되지 않는 언어는 404 페이지로
   if (!locales.includes(locale as (typeof locales)[number])) {
     notFound();
   }
-
-  // 서버 컴포넌트로 메시지 로딩 로직을 분리
-  const IntlProvider = async () => {
-    const messages = await getMessages(locale);
-
-    return (
-      <NextIntlClientProvider locale={locale} messages={messages}>
-        {children}
-      </NextIntlClientProvider>
-    );
-  };
 
   return (
     <html lang={locale}>
@@ -62,7 +69,7 @@ export default function LocaleLayout({ children, params }: LayoutProps) {
         />
       </head>
       <body>
-        <IntlProvider />
+        <IntlProviderWrapper locale={locale}>{children}</IntlProviderWrapper>
       </body>
     </html>
   );

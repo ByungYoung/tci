@@ -8,11 +8,13 @@ import { TCIResponse, tciItems } from "@/lib/tci-data";
 import TCITest from "@/components/TCITest";
 import TCIResult from "@/components/TCIResult";
 import { locales } from "@/app/i18n-config";
+import { useClientTranslation } from "@/lib/i18n-client";
 
 export default function TCIApp() {
   const locale = useLocale();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const { t } = useClientTranslation();
 
   const [responses, setResponses] = useState<TCIResponse>({});
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -120,38 +122,20 @@ export default function TCIApp() {
   return (
     <div className={styles.container}>
       <div className={styles.languageSelector}>
-        <button
-          onClick={() => changeLanguage("ko")}
-          className={`${styles.langButton} ${
-            language === "ko" ? styles.active : ""
-          }`}
+        <label htmlFor="language-select" className={styles.langLabel}>
+          {t("language")}:{" "}
+        </label>
+        <select
+          id="language-select"
+          value={language}
+          onChange={(e) => changeLanguage(e.target.value)}
+          className={styles.langSelect}
         >
-          한국어
-        </button>
-        <button
-          onClick={() => changeLanguage("en")}
-          className={`${styles.langButton} ${
-            language === "en" ? styles.active : ""
-          }`}
-        >
-          English
-        </button>
-        <button
-          onClick={() => changeLanguage("ja")}
-          className={`${styles.langButton} ${
-            language === "ja" ? styles.active : ""
-          }`}
-        >
-          日本語
-        </button>
-        <button
-          onClick={() => changeLanguage("zh")}
-          className={`${styles.langButton} ${
-            language === "zh" ? styles.active : ""
-          }`}
-        >
-          中文
-        </button>
+          <option value="ko">한국어</option>
+          <option value="en">English</option>
+          <option value="ja">日本語</option>
+          <option value="zh">中文</option>
+        </select>
       </div>
 
       {!isCompleted ? (
