@@ -51,9 +51,8 @@ async function IntlProviderWrapper({
 
 // 레이아웃을 서버 컴포넌트로 사용
 export default async function LocaleLayout({ children, params }: LayoutProps) {
-  // Next.js 15에서는 params를 await 해야 합니다
-  const resolvedParams = await Promise.resolve(params);
-  const locale = resolvedParams.locale ?? defaultLocale;
+  // params는 이미 해결된 객체이므로 직접 접근
+  const locale = params.locale ?? defaultLocale;
 
   // 지원되지 않는 언어는 404 페이지로
   if (!locales.includes(locale as (typeof locales)[number])) {

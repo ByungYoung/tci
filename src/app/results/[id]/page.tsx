@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
+import { useClientTranslation } from "@/lib/i18n-client";
 import TCIResult from "@/components/TCIResult";
 import { getTCIResultById } from "@/lib/supabase-service";
+import { TCIResponse } from "@/lib/tci-data";
 import styles from "@/styles/tci.module.css";
 
 interface ResultPageProps {
@@ -15,9 +15,11 @@ interface ResultPageProps {
 }
 
 export default function ResultPage({ params }: ResultPageProps) {
-  const { t } = useTranslation("common");
+  const { t } = useClientTranslation();
   const router = useRouter();
-  const [resultData, setResultData] = useState<any>(null);
+  const [resultData, setResultData] = useState<{
+    responses: TCIResponse;
+  } | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -80,19 +82,4 @@ export default function ResultPage({ params }: ResultPageProps) {
       />
     </div>
   );
-}
-
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: "blocking",
-  };
-}
-
-export async function getStaticProps({ locale }: { locale: string }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
 }

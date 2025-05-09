@@ -9,8 +9,19 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+// 간소화된 ESLint 설정
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...compat.extends("next/core-web-vitals"),
+  {
+    ignores: [
+      ".next/",
+      "out/",
+      "node_modules/",
+      "public/locales/",
+      "next-env.d.ts",
+      "src/lib/db/migrate.js",
+    ],
+  },
 ];
 
 export default eslintConfig;

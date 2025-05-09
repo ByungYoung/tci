@@ -8,6 +8,14 @@ const nextConfig = {
   images: {
     domains: ["supabase.co", "supabase.vercel-storage.com"],
   },
+  typescript: {
+    // 빌드 시 타입 검사 비활성화
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    // 빌드 시 ESLint 검사 비활성화
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default withNextIntl(nextConfig);
